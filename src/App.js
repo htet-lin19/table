@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Button from "./component/Button";
+import ListComponent from "./component/Table";
+
+import React, { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [components, setComponents] = useState(["Table"]);
+
+    const addComponent = () => {
+        setComponents([...components, "Table"]);
+    };
+
+    return (
+        <div className="App">
+            <Button onClick={addComponent} text="Add Table" />
+            {components.map((item, i) => (
+                <ListComponent text={item} key={i} />
+            ))}
+        </div>
+    );
 }
 
 export default App;
